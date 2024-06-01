@@ -74,7 +74,7 @@ class ItemCaseManager {
         $config = new Config(ItemCase::getInstance()->getDataFolder() . "itemcases.json", Config::JSON);
         $data = $config->get('item_cases', []);
         foreach ($data as $entry) {
-            $world = ItemCase::getInstance()->getWorldManager()->getWorldByName($entry['position']['level']);
+            $world = ItemCase::getInstance()->getServer()->getWorldManager()->getWorldByName($entry['position']['level']);
             if ($world instanceof World) {
                 $item = Item::legacyJsonDeserialize($entry['item']);
                 $position = new Vector3($entry['position']['x'], $entry['position']['y'], $entry['position']['z']);
