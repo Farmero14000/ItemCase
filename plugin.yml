@@ -1,0 +1,11 @@
+name: ItemCase
+version: 1.0.0
+author: Farmero
+api: 5.0.0
+main: Farmero\itemcase\ItemCase
+
+permissions:
+  itemcase.cmd:
+    default: op
+  itemcase.cmd.ritemcase:
+    default: op
