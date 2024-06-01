@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\item\StringToItemParser;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\StringTag;
 
 use Farmero\itemcase\ItemCase;
@@ -46,9 +47,11 @@ class ItemCaseCommand extends Command {
 
         $itemCaseManager = ItemCase::getInstance()->getItemCaseManager();
         $uniqueId = $itemCaseManager->generateUniqueId();
-        
+
         $item->setCustomName($itemName);
-        $item->setNamedTag(new StringTag((string)$uniqueId));
+        $compoundTag = new CompoundTag();
+        $compoundTag->setTag("uniqueId", new StringTag($uniqueId));
+        $item->setNamedTag($compoundTag);
 
         $itemEntity = $sender->getWorld()->dropItem($sender->getPosition(), $item);
         $itemEntity->setPickupDelay(0);
