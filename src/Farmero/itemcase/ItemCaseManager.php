@@ -8,6 +8,8 @@ use pocketmine\entity\object\ItemEntity;
 use pocketmine\nbt\tag\StringTag;
 use pocketmine\world\World;
 use pocketmine\utils\Config;
+use pocketmine\math\Vector3;
+use pocketmine\item\Item;
 
 use Farmero\itemcase\ItemCase;
 
@@ -69,10 +71,10 @@ class ItemCaseManager {
     }
 
     public function loadItemCases(): void {
-        $config = new Config($this->plugin->getDataFolder() . "itemcases.json", Config::JSON);
+        $config = new Config(ItemCase::getInstance()->getDataFolder() . "itemcases.json", Config::JSON);
         $data = $config->get('item_cases', []);
         foreach ($data as $entry) {
-            $world = $this->plugin->getServer()->getWorldManager()->getWorldByName($entry['position']['level']);
+            $world = ItemCase::getInstance()->getWorldManager()->getWorldByName($entry['position']['level']);
             if ($world instanceof World) {
                 $item = Item::legacyJsonDeserialize($entry['item']);
                 $position = new Vector3($entry['position']['x'], $entry['position']['y'], $entry['position']['z']);
