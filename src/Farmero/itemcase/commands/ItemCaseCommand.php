@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\item\StringToItemParser;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\nbt\tag\StringTag;
 
 use Farmero\itemcase\ItemCase;
 
