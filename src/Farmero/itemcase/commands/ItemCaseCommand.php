@@ -48,7 +48,7 @@ class ItemCaseCommand extends Command {
         $uniqueId = $itemCaseManager->generateUniqueId();
         
         $item->setCustomName($itemName);
-        $item->setNamedTag(new StringTag("itemcase_tag", (string)$uniqueId));
+        $item->setNamedTag(new StringTag((string)$uniqueId));
 
         $itemEntity = $sender->getWorld()->dropItem($sender->getPosition(), $item);
         $itemEntity->setPickupDelay(0);
