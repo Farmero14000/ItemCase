@@ -35,7 +35,7 @@ class ItemCaseCommand extends Command {
             return false;
         }
 
-        $itemId = (int)$args[0];
+        $itemId = $args[0];
         $itemName = $args[1] ?? "ItemCase";
 
         $item = StringToItemParser::getInstance()->parse($itemId);
